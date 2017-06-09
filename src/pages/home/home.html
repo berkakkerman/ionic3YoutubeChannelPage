@@ -1,14 +1,30 @@
+
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar class="youtube-player-header" dark>
+    {{title}}
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="home">
+    <div *ngFor="let post of data">
+      <ion-card class="adv-map">
+        <div style="position: relative">
+          <div class="sixteen-nine">
+            <div class="content">
+              <img src="{{post.snippet.thumbnails.high.url}}">
+            </div>
+          </div>
+          <button ion-button icon-only color="danger" (click)="playVideo($event, post)">
+            <ion-icon name='play'></ion-icon>
+          </button>
+        </div>
+        <ion-item style="padding-top: 26px;">
+          <ion-icon subtle large item-left name='disc' primary></ion-icon>
+          <h2 class="item-text-wrap">{{post.snippet.title}}</h2>
+        </ion-item>
+    
+      </ion-card>
+    </div>
+  <button light>Load More...</button>
+  
 </ion-content>
